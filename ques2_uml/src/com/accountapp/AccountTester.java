@@ -8,7 +8,7 @@ public class AccountTester {
 		Date date_two= new Date(01,02,1999);
 		
 		Owner keshav = new Owner("Keshav Arora",date_one,"ABC123");
-		Owner raghav = new Owner("Sweta Tripathy ",date_two,"XYZ456");
+		Owner raghav = new Owner("Raghav Arora ",date_two,"XYZ456");
 		
 		
 		Account account1 = new SavingAccount(keshav,10000,"1234");
@@ -22,6 +22,6 @@ public class AccountTester {
 		System.out.println(account1.getBalance());
 		account1.withdraw(500);
 		System.out.println(account1.getBalance());
-		account1.withdraw(100);
+		account1.withdraw(500);
 	}
 }
