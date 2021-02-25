@@ -1,0 +1,45 @@
+package ques1_merchantdise_inventory;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+public class Main {
+	public static void main(String[] args) {
+		
+		 String ItemId;
+		 int Qty;
+		 double Price;
+		 
+		 		List<Merchandise> merchandise=new ArrayList<>();
+	            String line=null;
+	            try (BufferedReader br = new BufferedReader(new FileReader(new File("C:\\Users\\ve00ym227\\Documents\\testspace\\ques1_merchantdise_inventory\\input.dat")))){
+	                while((line=br.readLine())!=null) {
+	                    
+	                	String []tokens=line.split(" ");
+	                	ItemId=tokens[0];
+	                	Qty=Integer.parseInt(tokens[1]);
+	                	Price=Double.parseDouble(tokens[2]);
+	                	merchandise.add(new Merchandise(ItemId, Qty, Price) );
+	                }
+	                
+	            } catch (FileNotFoundException e) {
+	                e.printStackTrace();
+	            } catch (IOException e1) {
+	                e1.printStackTrace();
+	            }
+	           
+	            Collections.sort(merchandise, (o1, o2) -> o1.getItemCode().compareTo(o2.getItemCode()));
+	            merchandise.forEach((Item) -> System.out.println(Item));
+	            
+	            Collections.sort(merchandise, (o2, o1) -> Double(o2.getUnitPrice().compareTo(o1.getUnitPrice())));
+	            merchandise.forEach((Item) -> System.out.println(Item));
+		 }
+
+}

@@ -1,0 +1,48 @@
+package com.accountapp;
+
+public class CurrentAccount extends Account {
+
+	private float min_Balance=1000;
+
+	public CurrentAccount() {
+	}
+
+	public CurrentAccount(Owner owner, float balance, String number) {
+		super( owner, balance, number);
+	}
+
+	public float getMinimumBalance() {
+		return min_Balance;
+	}
+
+	@Override
+	public void print() {
+		System.out.println("Owner: "+getOwner());
+		System.out.println("Balance: "+getBalance());
+		System.out.println("Number: "+getNumber());
+		System.out.println("Minimum Balance: "+getMinimumBalance());
+	}
+
+	@Override
+	public void withdraw(float amount) {
+
+		float balance = getBalance() - amount;
+		if (balance > min_Balance) {
+			setBalance(balance);
+			System.out.println("Amount Withdrawl");
+		} else {
+			System.out.println("Sorry Can't Withdraw");
+		}
+	}
+
+	@Override
+	public void deposit(float amount) {
+		setBalance(getBalance()+amount);		
+	}
+	
+	public float getCharges() {
+		return (float)(min_Balance*0.15);
+	}
+
+
+}

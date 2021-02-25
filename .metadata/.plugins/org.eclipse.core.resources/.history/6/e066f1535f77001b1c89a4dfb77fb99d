@@ -1,0 +1,43 @@
+package ques1_merchantdise_inventory;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+public class Main {
+	public static void main(String[] args) {
+		
+		 String ItemId;
+		 int Qty;
+		 double Price;
+		 
+	            Set<Merchandise>words=new LinkedHashSet<Merchandise>();
+	            String line=null;
+	            try (BufferedReader br = new BufferedReader(new FileReader(new File("C:\\Users\\ve00ym227\\Documents\\testspace\\ques1_merchantdise_inventory\\input.dat")))){
+	                while((line=br.readLine())!=null) {
+	                    
+	                	String []tokens=line.split(" ");
+	                	ItemId=tokens[0];
+	                	Qty=Integer.parseInt(tokens[1]);
+	                	Price=Double.parseDouble(tokens[2]);
+	                    words.add(new Merchandise(ItemId, Qty, Price) );
+	                }
+	                
+	            } catch (FileNotFoundException e) {
+	                e.printStackTrace();
+	            } catch (IOException e1) {
+	                e1.printStackTrace();
+	            }
+	            
+	            for(Merchandise word:words ) {
+	                System.out.print(word + " ");
+	            }
+		 }
+
+}
